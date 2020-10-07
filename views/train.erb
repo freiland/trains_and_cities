@@ -1,0 +1,19 @@
+<h1> Schedule for: <%= @train.name() %> train </h1>
+
+<h1>Update <%=@train.name() %></h1>
+
+<form action="/trains/<%= @train.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">   # use patch in app.rb
+
+  <label for="name">Rename train</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Update</button>
+</form>
+
+<form action="/trains/<%= @train.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete train</button>
+</form>
+<p><a href="/trains">Return to train list</a></p>

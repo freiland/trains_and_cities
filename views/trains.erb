@@ -1,0 +1,21 @@
+<h2>All Trains:</h2>
+
+<% if @trains.any? %>
+  <ul>
+    <% @trains.each do |train| %>
+      <li><a href="/trains/<%= train.id %>"><%= train.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no trains to display.</p>
+<% end %>
+
+<form action="/trains" method="post">
+  <div class="form-group">
+    <label for="train_name">train name</label>
+    <input id="n" name="train_name" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">add train</button>
+</form><br>
+
+<a href="/"> return to homepage </a> 
