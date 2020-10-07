@@ -47,8 +47,16 @@ describe '#Train' do
       train1.save
       train2 = Train.new({:name => "Thomas Tank Engine", :id => nil})
       train2.save
-      
       expect(Train.find(train1.id)).to(eq(train1))
+    end
+  end
+
+  describe('#update') do
+    it("changes the name by matching the id") do
+      train1 = Train.new({:name => "Empire Builder", :id => nil})
+      train1.save
+      train1.update("Empire Destroyer")
+      expect(train1.name).to(eq("Empire Destroyer"))
     end
   end
 end
