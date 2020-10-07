@@ -29,4 +29,26 @@ describe '#Train' do
       expect(Train.all).to(eq([train, train1]))
     end
   end
+
+  describe('.clear') do
+    it("clears everything from trains") do
+      train1 = Train.new({:name => "Empire Builder", :id => nil})
+      train1.save
+      train2 = Train.new({:name => "Thomas Tank Engine", :id => nil})
+      train2.save
+      Train.clear
+      expect(Train.all).to(eq([]))
+    end
+  end
+
+  describe('.find') do 
+    it ('will find a train by id and create a new train object') do 
+      train1 = Train.new({:name => "Empire Builder", :id => nil})
+      train1.save
+      train2 = Train.new({:name => "Thomas Tank Engine", :id => nil})
+      train2.save
+      
+      expect(Train.find(train1.id)).to(eq(train1))
+    end
+  end
 end
