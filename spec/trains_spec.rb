@@ -19,4 +19,14 @@ describe '#Train' do
       expect(train1).to(eq(train2))
     end
   end
+
+  describe ('#save') do 
+    it ('saves a train to the train table') do 
+      train = Train.new({:name => "NorthWest Express", :id => nil})
+      train.save()
+      train1 = Train.new({:name => "Starlight Express", :id => nil})
+      train1.save()
+      expect(Train.all).to(eq([train, train1]))
+    end
+  end
 end
