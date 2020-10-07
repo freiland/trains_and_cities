@@ -59,4 +59,17 @@ describe '#Train' do
       expect(train1.name).to(eq("Empire Destroyer"))
     end
   end
+
+  describe('#delete') do
+  it("deletes a train entry by matching id") do 
+    train1 = Train.new({:name => "Empire Builder", :id => nil})
+    train1.save
+    train2 = Train.new({:name => "Thomas Tank Engine", :id => nil})
+    train2.save
+    train1.delete
+    expect(Train.all).to(eq([train2]))
+  end 
+end 
+
+
 end
